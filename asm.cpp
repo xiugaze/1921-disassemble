@@ -189,6 +189,5 @@ int main() {
         cin >> command;
 
     }
-    printf("stay noided")
-
+    printf("stay noided");
 }

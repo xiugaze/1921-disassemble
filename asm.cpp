@@ -85,7 +85,7 @@ int getLink(uint32_t cmd) {
     return (cmd >> 25) & 0b01;
 }
 int getBImm(uint32_t cmd) {
-    return (cmd >> 24) & 0b111111111111111111111111;
+    return cmp & 0b111111111111111111111111;
 }
 
 int main() {

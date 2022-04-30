@@ -19,6 +19,7 @@ You can clone the project and run the .exe through the command line. If you don'
 cd {address} 
 ```
 - type ./asm.exe to run the executable### Supported Commands
+- If you don't trust the .exe, you can build the code yourself. I use VSCode with MINGW as my toolchain using the G++ compiler. I am not sure exactly how to set it up but after installing MINGW, VSCode automatically detects it as a build target, and you can build using ctrl-shift-b
 
 ### Supported ARMv4 Instructions
 ##### Data

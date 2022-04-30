@@ -41,6 +41,7 @@ int getShType(uint32_t cmd) {
 // arithmetic
 bool arithImm(uint32_t cmd) { return (cmd >> 25) & 0b0001; }
 int getImm(uint32_t cmd) { return cmd & 0b11111111; }
+
 string arithCmd(uint32_t cmd) { 
     cmd = (cmd >> 21) & 0b1111; 
     switch(cmd) {

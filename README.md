@@ -4,7 +4,23 @@ This is an ARMv4 machine code disassembler for CE1921 Computer Architecture. The
 
 <hr>
 
-### Supported Commands
+### Instructions
+You can clone the project and run the .exe through the command line. If you don't know how to do that, instructions are as follows
+
+- Create a new folder for the repository
+- Navigate to the folder and right click it in the top bar. 
+- Click copy address
+
+![](2022-04-29-21-33-30.png)
+
+- Open command prompt by typing "cmd" in the windows search bar. 
+- type cd address where address is replaced by the address copied to the clipboard
+```
+cd {address} 
+```
+- type ./asm.exe to run the executable### Supported Commands
+
+### Supported ARMv4 Instructions
 ##### Data
 - ADD
 - AND
@@ -26,23 +42,3 @@ All shifts are treated as an identity MOV instruction with the corresponding shi
 - BL
 - BEQ
 - BNE
-
-### Instructions
-You can clone the project and run the .exe through the command line. If you don't know how to do that, instructions are as follows
-
-- Create a new folder for the repository
-- Navigate to the folder and right click it in the top bar. 
-- Click copy address
-
-![](2022-04-29-21-33-30.png)
-
-- Open command prompt by typing "cmd" in the windows search bar. 
-- type cd address where address is replaced by the address copied to the clipboard
-```
-cd {address} 
-```
-- clone the repository by typing git clone https://github.com/xiugaze/1921-disassemble.git 
-```
-git clone https://github.com/xiugaze/1921-disassemble.git
-```
-- type ./asm.exe to run the executable

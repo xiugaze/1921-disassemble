@@ -72,10 +72,9 @@ string getShCommand(int shtype) {
 int getIPUBWL(uint32_t cmd) {
     return (cmd >> 20) & 0b111111;
 }
+
 string getLSCommand(int ipubwl) {
-    cout << "IPUBWL: " << ipubwl;
-    cout <<  "L: " << (ipubwl & 0b01);
-    string command = ipubwl & 0b01 == 0 ? "str" : "ldr"; 
+    string command = (ipubwl & 0b01) == 0 ? "str" : "ldr"; 
     command += (ipubwl >> 1) & 0b01 == 1 ? "b":""; 
     return command;
 }

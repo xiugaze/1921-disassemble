@@ -73,6 +73,8 @@ int getIPUBWL(uint32_t cmd) {
     return (cmd >> 20) & 0b111111;
 }
 string getLSCommand(int ipubwl) {
+    cout << "IPUBWL: " << ipubwl;
+    cout <<  "L: " << (ipubwl & 0b01);
     string command = ipubwl & 0b01 == 0 ? "str" : "ldr"; 
     command += (ipubwl >> 1) & 0b01 == 1 ? "b":""; 
     return command;
@@ -83,10 +85,19 @@ int getLSImm(uint32_t cmd) {
 
 // branch
 int getLink(uint32_t cmd) {
-    return (cmd >> 25) & 0b01;
+    return (cmd >> 24) & 0b01;
 }
 int getBImm(uint32_t cmd) {
-    return cmd & 0b111111111111111111111111;
+    unsigned int imm = cmd & 0xFFFFFF;
+    if(imm >> 23 == 1) {
+        unsigned int twoscomp = (~imm + 1) & 0xFFFFFF;
+        imm = twoscomp;
+    }
+    return imm << 2;
+}
+
+string getBSign(uint32_t cmd) {
+    return ((cmd >> 23) & 0b1) == 0 ? "+":"-";
 }
 
 int main() {
@@ -170,14 +181,14 @@ int main() {
                     } else {
                         cmd += "bal ";
                     }
-                } else if(condition) {
+                } else if(condition(val) == 0) {
                     // branch equals
                     cmd += "beq ";
                 } else {
                     cmd += "bne ";
                     // branch not equals
                 }
-                cmd += "0b" + to_string(getBImm(val));
+                cmd += "PC + 8 " + getBSign(val) + " " + to_string(getBImm(val));
                 output = cmd;
                 break;
             }
